@@ -1,0 +1,164 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-02-28T00:47:13.928Z",
+    "end": "2022-02-28T00:47:14.900Z",
+    "duration": 972,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4f058d17-834c-43cd-8674-33e46af3e5b2",
+      "title": "",
+      "fullFile": "cypress/framework/ToDoAPITest.spec.js",
+      "file": "cypress/framework/ToDoAPITest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a4ab42df-c36e-49e8-a253-912b41a5516c",
+          "title": "ToDo API Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Task 1 Api_login",
+              "fullTitle": "ToDo API Test Task 1 Api_login",
+              "timedOut": null,
+              "duration": 397,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: Cypress.config(\"apibaseUrl\") + '/users/login',\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: {\n    \"email\": this.data.username,\n    \"password\": this.data.password\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.eq(200);\n  expect(res.body.firstname).to.not.eq(null);\n  let token_value = res.body;\n  access_token = token_value['access_token'];\n});",
+              "err": {},
+              "uuid": "bb0952e2-496c-4829-b9ee-9ed6b8c79b6a",
+              "parentUUID": "a4ab42df-c36e-49e8-a253-912b41a5516c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Task 2 Create_Todo",
+              "fullTitle": "ToDo API Test Task 2 Create_Todo",
+              "timedOut": null,
+              "duration": 175,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'POST',\n  url: Cypress.config(\"apibaseUrl\") + '/tasks',\n  headers: {\n    'Content-Type': 'application/json',\n    'Authorization': 'Bearer ' + access_token\n  },\n  body: {\n    \"item\": this.data.todo_list,\n    \"isCompleted\": false\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.eq(201);\n  expect(res.body.addedTask.isCompleted).to.eq(false);\n  expect(res.body.addedTask._id).to.not.eq(null);\n  let id = res.body;\n  created_id = id.addedTask._id;\n});",
+              "err": {},
+              "uuid": "60ccb318-ef45-44dd-a8fa-c5a64864d69f",
+              "parentUUID": "a4ab42df-c36e-49e8-a253-912b41a5516c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Task 3 Complete_Todo",
+              "fullTitle": "ToDo API Test Task 3 Complete_Todo",
+              "timedOut": null,
+              "duration": 190,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'PUT',\n  url: Cypress.config(\"apibaseUrl\") + '/tasks/' + created_id,\n  headers: {\n    'Content-Type': 'application/json',\n    'Authorization': 'Bearer ' + access_token\n  },\n  body: {\n    \"item\": this.data.todo_list,\n    \"isCompleted\": true\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.eq(200);\n  expect(res.body.updatedTask.isCompleted).to.eq(true);\n  expect(res.body.updatedTask._id).to.eq(created_id);\n  expect(res.body.updatedTask.item).to.eq(this.data.todo_list);\n});",
+              "err": {},
+              "uuid": "8473fe4e-16ff-4856-b0eb-524ce9a13b0e",
+              "parentUUID": "a4ab42df-c36e-49e8-a253-912b41a5516c",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Task 4 Delete_Todo",
+              "fullTitle": "ToDo API Test Task 4 Delete_Todo",
+              "timedOut": null,
+              "duration": 155,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.request({\n  method: 'DELETE',\n  url: Cypress.config(\"apibaseUrl\") + '/tasks/' + created_id,\n  headers: {\n    'Content-Type': 'application/json',\n    'Authorization': 'Bearer ' + access_token\n  }\n}).then(res => {\n  cy.log(JSON.stringify(res));\n  expect(res.status).to.eq(200);\n  expect(res.body.deletedTask.isCompleted).to.eq(true);\n  expect(res.body.deletedTask._id).to.eq(created_id);\n  expect(res.body.deletedTask.item).to.eq(this.data.todo_list);\n  expect(res.body.deletedTask.userID).to.not.eq(null);\n});",
+              "err": {},
+              "uuid": "a5dfda2b-6c71-4fa0-8871-b12307e0639c",
+              "parentUUID": "a4ab42df-c36e-49e8-a253-912b41a5516c",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "bb0952e2-496c-4829-b9ee-9ed6b8c79b6a",
+            "60ccb318-ef45-44dd-a8fa-c5a64864d69f",
+            "8473fe4e-16ff-4856-b0eb-524ce9a13b0e",
+            "a5dfda2b-6c71-4fa0-8871-b12307e0639c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 917,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}

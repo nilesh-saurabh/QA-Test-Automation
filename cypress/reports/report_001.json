@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-02-28T00:46:06.483Z",
+    "end": "2022-02-28T00:46:19.617Z",
+    "duration": 13134,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6ff14c24-e59c-4425-a653-596dbbd7c761",
+      "title": "",
+      "fullFile": "cypress/framework/ToDoTest.spec.js",
+      "file": "cypress/framework/ToDoTest.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "322eed5f-000a-4533-a45a-47b4d8e27755",
+          "title": "ToDo E2E Automation Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Task 1",
+              "fullTitle": "ToDo E2E Automation Test Task 1",
+              "timedOut": null,
+              "duration": 13109,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "objloginpage.login(this.data.username, this.data.password), objhomepage.homepage_verification();\nobjhomepage.welcome_message_verification();\nobjhomepage.create_todo(this.data.todo_list, this.data.todo_count);\nobjhomepage.check_todo();\nobjhomepage.delete_todo();",
+              "err": {},
+              "uuid": "9e770fc9-34bf-40e4-850b-444d8bab0e7c",
+              "parentUUID": "322eed5f-000a-4533-a45a-47b4d8e27755",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9e770fc9-34bf-40e4-850b-444d8bab0e7c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 13109,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.3.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "reportFilename": "report",
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "charts": true
+      },
+      "version": "5.2.0"
+    }
+  }
+}
