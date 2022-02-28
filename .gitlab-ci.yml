@@ -1,0 +1,24 @@
+image: cypress/base:10
+
+stages:
+  - build
+  - test
+
+build_app:
+  stage: build
+  script:
+      - npm install
+      - npm run start:server
+      - npm run start
+
+api_tests:
+  stage: test
+  script:
+      - npm install
+      - npm run apiTests_headless
+
+e2e_Tests:
+  stage: test
+  script:
+      - npm install
+      - npm run e2eTests_headless
